@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1022
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSTAPI", "GSTAPI\GSTAPI.csproj", "{C2D7C8A8-0328-46C6-90BB-670D07BFE300}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.csproj", "{B230A3BF-7CA4-419C-AFD8-8E21881333CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2D7C8A8-0328-46C6-90BB-670D07BFE300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2D7C8A8-0328-46C6-90BB-670D07BFE300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2D7C8A8-0328-46C6-90BB-670D07BFE300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2D7C8A8-0328-46C6-90BB-670D07BFE300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B230A3BF-7CA4-419C-AFD8-8E21881333CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B230A3BF-7CA4-419C-AFD8-8E21881333CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B230A3BF-7CA4-419C-AFD8-8E21881333CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B230A3BF-7CA4-419C-AFD8-8E21881333CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD0672DC-6252-473A-BF4E-D5F3BF6734BE}
+	EndGlobalSection
+EndGlobal

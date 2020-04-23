@@ -1,0 +1,9 @@
+E:\Temp\GSTAPI\GSTAPI\bin\Debug\GSTAPI.dll
+E:\Temp\GSTAPI\GSTAPI\bin\Debug\GSTAPI.pdb
+E:\Temp\GSTAPI\GSTAPI\bin\Debug\Newtonsoft.Json.dll
+E:\Temp\GSTAPI\Builds\GSTAPI.dll
+E:\Temp\GSTAPI\Builds\GSTAPI.pdb
+E:\Temp\GSTAPI\GSTAPI\obj\Debug\GSTAPI.csproj.CoreCompileInputs.cache
+E:\Temp\GSTAPI\GSTAPI\obj\Debug\GSTAPI.csproj.CopyComplete
+E:\Temp\GSTAPI\GSTAPI\obj\Debug\GSTAPI.dll
+E:\Temp\GSTAPI\GSTAPI\obj\Debug\GSTAPI.pdb

@@ -1,0 +1,71 @@
+﻿using GSTAPI.Helper;
+using GSTAPI.Models;
+using System.Collections.Specialized;
+
+namespace GSTAPI.Services
+{
+    public static class GSTR4AService
+    {
+        private static Response GetInvoices(Request userInfo, NameValueCollection queryString)
+        {
+            if (!RequestHandler.IsRequestNull(userInfo, out string message))
+                return RequestHandler.ErrorResponse("GSP121", message);
+            
+            var handler = new RequestHandler(userInfo);
+            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr4a", queryString);
+        }
+        public static Response GetB2BAmendment(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN ="")
+        {
+            var queryString = new NameValueCollection();
+            queryString.Add("sec_num", "B2BA");
+            queryString.Add("action", "B2BA");
+            queryString.Add("ret_period", returnPeriod);
+            queryString.Add("gstin", gstin);
+            if (!string.IsNullOrEmpty(counterPartyGSTIN))
+                queryString.Add("ctin", counterPartyGSTIN);
+            return GetInvoices(userInfo, queryString);
+        }
+        public static Response GetB2BInvoices(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "")
+        {
+            var queryString = new NameValueCollection();
+            queryString.Add("sec_num", "B2B");
+            queryString.Add("action", "B2B");
+            queryString.Add("ret_period", returnPeriod);
+            queryString.Add("gstin", gstin);
+            if (!string.IsNullOrEmpty(counterPartyGSTIN))
+                queryString.Add("ctin", counterPartyGSTIN);
+
+            return GetInvoices(userInfo, queryString);
+        }
+        public static Response GetCDNR(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "")
+        {
+            var queryString = new NameValueCollection();
+            queryString.Add("action", "CDNR");
+            queryString.Add("ret_period", returnPeriod);
+            queryString.Add("gstin", gstin);
+            if (!string.IsNullOrEmpty(counterPartyGSTIN))
+                queryString.Add("ctin", counterPartyGSTIN);
+            return GetInvoices(userInfo, queryString);
+        }
+        public static Response GetCDNRAmendment(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "")
+        {
+            var queryString = new NameValueCollection();
+            queryString.Add("action", "CDNRA");
+            queryString.Add("ret_period", returnPeriod);
+            queryString.Add("gstin", gstin);
+            if (!string.IsNullOrEmpty(counterPartyGSTIN))
+                queryString.Add("ctin", counterPartyGSTIN);
+            return GetInvoices(userInfo, queryString);
+        }
+        public static Response GetTDSDetails(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "")
+        {
+            var queryString = new NameValueCollection();
+            queryString.Add("action", "TDS");
+            queryString.Add("ret_period", returnPeriod);
+            queryString.Add("gstin", gstin);
+            if (!string.IsNullOrEmpty(counterPartyGSTIN))
+                queryString.Add("ctin", counterPartyGSTIN);
+            return GetInvoices(userInfo, queryString);
+        }
+    }
+}
