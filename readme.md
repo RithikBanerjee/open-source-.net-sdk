@@ -1,4 +1,4 @@
-### A Class Library which saves, submits, files as well as fetches GST details
+### Class Library which saves, submits, files as well as fetches GST details
 
 #### What is the project about?
 - Provides GSTR services like GSTR-1, GSTR-2A, GSTR-3B, etc.
@@ -22,7 +22,7 @@
 - For more information on specific return type please visit: https://developer.gst.gov.in/apiportal
 
 #### How to run the project?
-- Made a DemoApp to elastrate DLL's methods
+- Made a DemoApp to elastrate DLL's services
 - Open the DemoApp.sln in your VS & Press 'F5'
 
 #### From where does it fetches data?
