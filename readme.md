@@ -1,4 +1,19 @@
-### Class Library which saves, submits, files as well as fetches GST details
+### Open Source SDK for GST Returns  
+
+&emsp; GST DLL is a friendly class library which you can use to build your own GST software. It runs on .Net framework 4.6.1 and c# verion 6.0 just to help those millions of software developers to develop software on GST returns with better customization and better statical solutions. This is a software management tool used to file, save, submit as well as fetch GST details for any taxpayer.<br />
+&emsp; This c# class library has the capability of versatile software development and more over its open source which allows us to add more features as we discover it more. If used this dll as predicted can surely replace gaint head MNC's GST software and indeed with less resouce and low budget.
+
+#### Tables of Content
+- [Models](#-models)
+- Helpers
+- Services
+- Contribution
+
+#### Models
+&emsp; A object named _Request_ that is required by every service that is requested which would need certain informations as __UserName__, __StateCode__, __GSTIN__, __ReturnPeriod__, __GSTNAppKey__ etc. in order to process the request.
+To save, submit or file, it needs a json string(_JsonData_) which is to be saved, submited or filed
+For more information on specific return type please visit: https://developer.gst.gov.in/apiportal
+
 
 #### What is the project about?
 - Provides GSTR services like GSTR-1, GSTR-2A, GSTR-3B, etc.
