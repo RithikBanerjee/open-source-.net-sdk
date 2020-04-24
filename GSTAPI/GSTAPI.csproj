@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helper\Cryptography.cs" />
+    <Compile Include="Helper\CipherHandler.cs" />
     <Compile Include="Helper\UrlHandler.cs" />
     <Compile Include="Helper\RequestHandler.cs" />
     <Compile Include="Models\Request.cs" />
