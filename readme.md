@@ -4,7 +4,7 @@
 &emsp; This c# class library has the capability of versatile software development and more over its open source which allows us to add more features as we discover it more. If used this dll as predicted can surely replace gaint head MNC's GST software and indeed with less resouce and low budget.
 
 #### Tables of Content
-- [Models](#-models)
+- [Models](#-Models)
 - Helpers
 - Services
 - Contribution
