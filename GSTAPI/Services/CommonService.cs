@@ -18,8 +18,8 @@ namespace GSTAPI.Services
                 {
                     { "action", "ACCESSTOKEN" },
                     { "username", username },
-                    { "password", Cryptography.EncryptData(password, appKey) },
-                    { "app_key", Cryptography.EncryptTextWithGSTNPublicKey(appKey) }
+                    { "password", CipherHandler.EncryptData(password, appKey) },
+                    { "app_key", CipherHandler.EncryptTextWithGSTNPublicKey(appKey) }
                 });
             }
             catch (Exception)
@@ -40,7 +40,7 @@ namespace GSTAPI.Services
                     { "action", "LOGOUT" },
                     { "username", username },
                     { "authtoken", authToken },
-                    { "app_key", Cryptography.EncryptTextWithGSTNPublicKey(appKey) }
+                    { "app_key", CipherHandler.EncryptTextWithGSTNPublicKey(appKey) }
                 });
             }
             catch (Exception)

@@ -58,8 +58,8 @@ namespace GSTAPI.Services
                 payload = JsonConvert.SerializeObject(new RequestPayload()
                 {
                     APIAction = "RETGENCERT",
-                    EncryptedData = Cryptography.EncryptData(jsonData, userInfo.Keys.SessionKey),
-                    HAMCData = Cryptography.Hmac(jsonData, userInfo.Keys)
+                    EncryptedData = CipherHandler.EncryptData(jsonData, userInfo.Keys.SessionKey),
+                    HAMCData = CipherHandler.Hmac(jsonData, userInfo.Keys)
                 });
                 
             }
@@ -100,8 +100,8 @@ namespace GSTAPI.Services
                 payload = JsonConvert.SerializeObject(new RequestPayload()
                 {
                     APIAction = "RETGENHASH",
-                    EncryptedData = Cryptography.EncryptData(jsonData, userInfo.Keys.SessionKey),
-                    HAMCData = Cryptography.Hmac(jsonData, userInfo.Keys)
+                    EncryptedData = CipherHandler.EncryptData(jsonData, userInfo.Keys.SessionKey),
+                    HAMCData = CipherHandler.Hmac(jsonData, userInfo.Keys)
                 });
 
             }

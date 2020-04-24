@@ -7,3 +7,10 @@ E:\Temp\GSTAPI\GSTAPI\obj\Debug\GSTAPI.csproj.CoreCompileInputs.cache
 E:\Temp\GSTAPI\GSTAPI\obj\Debug\GSTAPI.csproj.CopyComplete
 E:\Temp\GSTAPI\GSTAPI\obj\Debug\GSTAPI.dll
 E:\Temp\GSTAPI\GSTAPI\obj\Debug\GSTAPI.pdb
+E:\Temp\GST-API\Builds\GSTAPI.dll
+E:\Temp\GST-API\Builds\GSTAPI.pdb
+E:\Temp\GST-API\GSTAPI\obj\Debug\GSTAPI.csprojAssemblyReference.cache
+E:\Temp\GST-API\GSTAPI\obj\Debug\GSTAPI.csproj.CoreCompileInputs.cache
+E:\Temp\GST-API\GSTAPI\obj\Debug\GSTAPI.csproj.CopyComplete
+E:\Temp\GST-API\GSTAPI\obj\Debug\GSTAPI.dll
+E:\Temp\GST-API\GSTAPI\obj\Debug\GSTAPI.pdb

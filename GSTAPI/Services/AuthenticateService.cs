@@ -38,7 +38,7 @@ namespace GSTAPI.Services
                 payload = JsonConvert.SerializeObject(new
                 {
                     action = "OTPREQUEST",
-                    app_key =  Cryptography.EncryptTextWithGSTNPublicKey(userInfo.Keys.GSTNAppKey),
+                    app_key =  CipherHandler.EncryptTextWithGSTNPublicKey(userInfo.Keys.GSTNAppKey),
                     username = userInfo.Header.Username 
                 });
             }
@@ -61,9 +61,9 @@ namespace GSTAPI.Services
                 payload = JsonConvert.SerializeObject(new 
                 {
                     action =  "AUTHTOKEN",
-                    app_key = Cryptography.EncryptTextWithGSTNPublicKey(userInfo.Keys.GSTNAppKey),
+                    app_key = CipherHandler.EncryptTextWithGSTNPublicKey(userInfo.Keys.GSTNAppKey),
                     username = userInfo.Header.Username,
-                    otp = Cryptography.EncryptData(otp, userInfo.Keys.GSTNAppKey) 
+                    otp = CipherHandler.EncryptData(otp, userInfo.Keys.GSTNAppKey) 
                 });
             }
             catch (Exception)
@@ -84,7 +84,7 @@ namespace GSTAPI.Services
                 payload = JsonConvert.SerializeObject(new 
                 {
                     action = "REFRESHTOKEN",
-                    app_key = Cryptography.EncryptTextWithGSTNPublicKey(userInfo.Keys.GSTNAppKey),
+                    app_key = CipherHandler.EncryptTextWithGSTNPublicKey(userInfo.Keys.GSTNAppKey),
                     username = userInfo.Header.Username,
                     auth_token = userInfo.Header.AuthToken 
                 });
@@ -108,7 +108,7 @@ namespace GSTAPI.Services
                 payload = JsonConvert.SerializeObject(new 
                 {
                     action = "LOGOUT",
-                    app_key = Cryptography.EncryptTextWithGSTNPublicKey(userInfo.Keys.GSTNAppKey),
+                    app_key = CipherHandler.EncryptTextWithGSTNPublicKey(userInfo.Keys.GSTNAppKey),
                     username = userInfo.Header.Username,
                     auth_token = userInfo.Header.AuthToken
                 });

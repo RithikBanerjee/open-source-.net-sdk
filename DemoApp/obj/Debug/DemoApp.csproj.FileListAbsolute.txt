@@ -9,3 +9,14 @@ E:\Temp\GSTAPI\DemoApp\obj\Debug\DemoApp.csproj.CoreCompileInputs.cache
 E:\Temp\GSTAPI\DemoApp\obj\Debug\DemoApp.csproj.CopyComplete
 E:\Temp\GSTAPI\DemoApp\obj\Debug\DemoApp.exe
 E:\Temp\GSTAPI\DemoApp\obj\Debug\DemoApp.pdb
+E:\Temp\GST-API\DemoApp\bin\Debug\DemoApp.exe.config
+E:\Temp\GST-API\DemoApp\bin\Debug\DemoApp.exe
+E:\Temp\GST-API\DemoApp\bin\Debug\DemoApp.pdb
+E:\Temp\GST-API\DemoApp\bin\Debug\GSTAPI.dll
+E:\Temp\GST-API\DemoApp\bin\Debug\Newtonsoft.Json.dll
+E:\Temp\GST-API\DemoApp\bin\Debug\GSTAPI.pdb
+E:\Temp\GST-API\DemoApp\obj\Debug\DemoApp.csprojAssemblyReference.cache
+E:\Temp\GST-API\DemoApp\obj\Debug\DemoApp.csproj.CoreCompileInputs.cache
+E:\Temp\GST-API\DemoApp\obj\Debug\DemoApp.csproj.CopyComplete
+E:\Temp\GST-API\DemoApp\obj\Debug\DemoApp.exe
+E:\Temp\GST-API\DemoApp\obj\Debug\DemoApp.pdb
