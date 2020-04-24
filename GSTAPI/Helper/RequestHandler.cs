@@ -115,7 +115,7 @@ namespace GSTAPI.Helper
             if (response.EncryptedData == null)
                 return responseObject;
 
-            responseObject.Data = decryptData ? Cryptography.DecryptResponseData(response.EncryptedData, response.ResponseKey, UserRequest.Keys) : response.EncryptedData;
+            responseObject.Data = decryptData ? CipherHandler.DecryptResponseData(response.EncryptedData, response.ResponseKey, UserRequest.Keys) : response.EncryptedData;
             return responseObject;
         }
         public static Response ErrorResponse(string code, string message)
@@ -272,8 +272,8 @@ namespace GSTAPI.Helper
                 payload = JsonConvert.SerializeObject(new RequestPayload()
                 {
                     APIAction = "RETOFFSET",
-                    EncryptedData = Cryptography.EncryptTextWithSessionKey(jsonData, UserRequest.Keys),
-                    HAMCData = Cryptography.Hmac(jsonData, UserRequest.Keys)
+                    EncryptedData = CipherHandler.EncryptTextWithSessionKey(jsonData, UserRequest.Keys),
+                    HAMCData = CipherHandler.Hmac(jsonData, UserRequest.Keys)
                 });
             }
             catch (Exception)
@@ -294,8 +294,8 @@ namespace GSTAPI.Helper
                 payload = JsonConvert.SerializeObject(new RequestPayload()
                 {
                     APIAction = "RETSAVE",
-                    EncryptedData = Cryptography.EncryptTextWithSessionKey(jsonData, UserRequest.Keys),
-                    HAMCData = Cryptography.Hmac(jsonData, UserRequest.Keys)
+                    EncryptedData = CipherHandler.EncryptTextWithSessionKey(jsonData, UserRequest.Keys),
+                    HAMCData = CipherHandler.Hmac(jsonData, UserRequest.Keys)
                 });
             }
             catch (Exception)
@@ -315,8 +315,8 @@ namespace GSTAPI.Helper
                 payload = JsonConvert.SerializeObject(new RequestPayload()
                 {
                     APIAction = "RETSUBMIT",
-                    EncryptedData = Cryptography.EncryptTextWithSessionKey(jsonData, UserRequest.Keys),
-                    HAMCData = Cryptography.Hmac(jsonData, UserRequest.Keys)
+                    EncryptedData = CipherHandler.EncryptTextWithSessionKey(jsonData, UserRequest.Keys),
+                    HAMCData = CipherHandler.Hmac(jsonData, UserRequest.Keys)
                 });
             }
             catch (Exception)
@@ -340,7 +340,7 @@ namespace GSTAPI.Helper
                 payload = JsonConvert.SerializeObject(new RequestPayloadForFiling()
                 {
                     APIAction = "RETFILE",
-                    EncryptedData = Cryptography.EncryptTextWithSessionKey(jsonData, UserRequest.Keys),
+                    EncryptedData = CipherHandler.EncryptTextWithSessionKey(jsonData, UserRequest.Keys),
                     Signature = signature,
                     SignatureId = signatureId,
                     SignatureType = signatureType,
