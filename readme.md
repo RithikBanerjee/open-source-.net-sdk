@@ -1,4 +1,4 @@
-### A Class Library which saves, submits, files as well as fetches GST details
+### Class Library which saves, submits, files as well as fetches GST details
 
 #### What is the project about?
 - Provides GSTR services like GSTR-1, GSTR-2A, GSTR-3B, etc.
