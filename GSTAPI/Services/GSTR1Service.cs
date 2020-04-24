@@ -6,15 +6,16 @@ namespace GSTAPI.Services
 {
     public static class GSTR1Service
     {
-        private static string version = "v1.1";
-        private static string returnType = "GSTR1";
+        private static readonly string ReturnType = "R1";
+        private static readonly string Version = UrlHandler.GetVersion(version.v1_1);
         private static Response GetInvoices(Request userInfo, NameValueCollection queryString)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr1", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
+            return handler.DecryptGetResponse(url, queryString);
         }
         /// <summary>Files GSTR1 data signed with EVC signature.</summary>
         /// <param name="jsonData">The GSTR1 data to file in Json string format.</param>
@@ -29,7 +30,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/gstr1/file", jsonData, version, returnType, $"{PAN}|{OTP}");
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
+            return handler.File(url, jsonData, Version, ReturnType, $"{PAN}|{OTP}");
         }
         public static Response FileWithDSC(Request userInfo, string jsonData, string signature, string PAN)
         {
@@ -37,7 +39,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/gstr1/file", jsonData, version, returnType, PAN, signature);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
+            return handler.File(url, jsonData, Version, ReturnType, PAN, signature);
         }
         public static Response Save(Request userInfo, string jsonData)
         {
@@ -45,7 +48,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.Save("http://localhost:11599/api/returns/gstr1/save", jsonData);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
+            return handler.Save(url, jsonData);
         }
         public static Response Submit(Request userInfo, string jsonData)
         {
@@ -53,27 +57,28 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.Submit("http://localhost:11599/api/returns/gstr1/submit", jsonData);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
+            return handler.Submit(url, jsonData);
         }
-        public static Response GetReturnStatus(Request userInfo, string returnPeriod, string gstin, string internalTransactionId)
+        public static Response GetReturnStatus(Request userInfo, string returnPeriod, string gstin, string transactionId)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
                 return RequestHandler.ErrorResponse("GSP121", message);
             
             var queryString = new NameValueCollection();
-            queryString.Add("trans_id", internalTransactionId);
+            queryString.Add("action", "RETSTATUS");
+            queryString.Add("trans_id", transactionId);
             queryString.Add("ret_period", returnPeriod);
             queryString.Add("gstin", gstin);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr1/trackreturnstatus", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_2, modName.returns_gstr1);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GetAT(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
             queryString.Add("action", "AT");
-            queryString.Add("ret_period", returnPeriod);
-            queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
         public static Response GetATA(Request userInfo, string returnPeriod, string gstin)

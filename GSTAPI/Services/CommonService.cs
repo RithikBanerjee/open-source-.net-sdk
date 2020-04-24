@@ -27,7 +27,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP141", "Error encrypting payload");
             }
             var handler = new RequestHandler();
-            return handler.Post("http://localhost:11599/api/commonapi/authrequest", payload);
+            var url = UrlHandler.Route(accessGroup.commonapi, version.v0_2, modName.authenticate);
+            return handler.Post(url, "ACCESSTOKEN", payload);
         }
         public static Response Logout(string username, string appKey, string authToken)
         {
@@ -49,33 +50,39 @@ namespace GSTAPI.Services
             var handler = new RequestHandler();
             handler.UserRequest.Header.Username = username;
             handler.UserRequest.Header.AuthToken = authToken;
-
-            return handler.Post("http://localhost:11599/api/commonapi/logout", payload);
+            var url = UrlHandler.Route(accessGroup.commonapi, version.v0_2, modName.authenticate);
+            return handler.Post(url, "LOGOUT", payload);
         }
         public static Response SearchTaxpayer(string username, string authToken, string gstinToSearch)
         {
-            var queryString = new NameValueCollection();
-            queryString.Add("gstin", gstinToSearch);
+            var queryString = new NameValueCollection
+            {
+                { "action", "TP" },
+                { "gstin", gstinToSearch }
+            };
 
             var handler = new RequestHandler();
             handler.UserRequest.Header.Username = username;
             handler.UserRequest.Header.AuthToken = authToken;
-
-            return handler.Get("http://localhost:11599/api/commonapi/search", queryString);
+            var url = UrlHandler.Route(accessGroup.commonapi, version.v0_2, modName.search);
+            return handler.Get(url, queryString);
         }
         public static Response TrackReturnStatus(string username, string authToken, CipherKeys keys, string gstin, string returnPeriod, string returnType)
         {
-            var queryString = new NameValueCollection();
-            queryString.Add("gstin", gstin);
-            queryString.Add("fy", returnPeriod);
-            queryString.Add("type", returnType);
+            var queryString = new NameValueCollection
+            {
+                { "action", "RETTRACK" },
+                { "gstin", gstin },
+                { "fy", returnPeriod },
+                { "type", returnType }
+            };
 
             var handler = new RequestHandler();
             handler.UserRequest.Keys = keys;
             handler.UserRequest.Header.Username = username;
             handler.UserRequest.Header.AuthToken = authToken;
-
-            return handler.DecryptGetResponse("http://localhost:11599/api/commonapi/trackreturnstatus", queryString);
+            var url = UrlHandler.Route(accessGroup.commonapi, version.v1_0, modName.returns);
+            return handler.DecryptGetResponse(url, queryString);
         } 
     }
 }

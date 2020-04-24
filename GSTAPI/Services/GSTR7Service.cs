@@ -6,15 +6,16 @@ namespace GSTAPI.Services
 {
     public static class GSTR7Service
     {
-        private static string version = "v1.1";
-        private static string returnType = "GSTR7";
+        private static readonly string ReturnType = "R7";
+        private static readonly string Version = UrlHandler.GetVersion(version.v1_1);
         public static Response FileWithEVC(Request userInfo, string jsonData, string PAN, string OTP)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/gstr7/file", jsonData, version, returnType, $"{PAN}|{OTP}");
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr7);
+            return handler.File(url, jsonData, Version, ReturnType, $"{PAN}|{OTP}");
         }
         public static Response FileWithDSC(Request userInfo, string jsonData, string signature, string PAN)
         {
@@ -22,7 +23,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/gstr7/file", jsonData, version, returnType, PAN, signature);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr7);
+            return handler.File(url, jsonData, Version, ReturnType, PAN, signature);
         }
         public static Response Save(Request userInfo, string jsonData)
         {
@@ -30,7 +32,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.Save("http://localhost:11599/api/returns/gstr7/save", jsonData);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr7);
+            return handler.Save(url, jsonData);
         }
         public static Response GetTDSChecksum(Request userInfo, string returnPeriod, string gstin, string fromTime = "", string recType = "")
         {
@@ -47,7 +50,8 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr7", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr7);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GetTDSDetails(Request userInfo, string returnPeriod, string gstin, string fromTime = "", string recType = "")
         {

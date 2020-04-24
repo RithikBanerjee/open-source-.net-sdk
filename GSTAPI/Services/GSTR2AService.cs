@@ -12,7 +12,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr2a", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_0, modName.returns_gstr2a);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GetB2BInvoices(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "", string fromWhichTime = "")
         {
@@ -86,12 +87,17 @@ namespace GSTAPI.Services
         }
         public static Response GetTCSCredit(Request userInfo, string returnPeriod, string gstin)
         {
+            if (!RequestHandler.IsRequestNull(userInfo, out string message))
+                return RequestHandler.ErrorResponse("GSP121", message);
+
             var queryString = new NameValueCollection();
             queryString.Add("action", "TCS");
             queryString.Add("ret_period", returnPeriod);
             queryString.Add("gstin", gstin);
-
-            return GetInvoices(userInfo, queryString);
+            
+            var handler = new RequestHandler(userInfo);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_2, modName.returns_gstr2a);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GetTDSCredit(Request userInfo, string returnPeriod, string gstin)
         {

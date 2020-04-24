@@ -8,15 +8,16 @@ namespace GSTAPI.Services
 {
     public static class GSTR9CService
     {
-        private static string version = "v1.1";
-        private static string returnType = "GSTR9C";
+        private static readonly string ReturnType = "R9C";
+        private static readonly string Version = UrlHandler.GetVersion(version.v1_1);
         public static Response Save(Request userInfo, string jsonData)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.Save("http://localhost:11599/api/returns/gstr9c/save", jsonData);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9c);
+            return handler.Save(url, jsonData);
         }
         public static Response Get9RecordsFor9C(Request userInfo, string returnPeriod, string gstin)
         {
@@ -29,7 +30,8 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr9c", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9c);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GetSummary(Request userInfo, string returnPeriod, string gstin)
         {
@@ -42,7 +44,8 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr9c", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9c);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GenerateCertificate(Request userInfo, string jsonData)
         {
@@ -65,7 +68,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP141", "Error encrypting payload");
             }
             var handler = new RequestHandler(userInfo);
-            return handler.Put("http://localhost:11599/api/returns/gstr9c/generate", payload);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9c);
+            return handler.Put(url, "RETGENCERT", payload);
         }
         public static Response FileWithEVC(Request userInfo, string jsonData, string PAN, string OTP)
         {
@@ -73,7 +77,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/gstr9c/file", jsonData, version, returnType, $"{PAN}|{OTP}");
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9c);
+            return handler.File(url, jsonData, Version, ReturnType, $"{PAN}|{OTP}");
         }
         public static Response FileWithDSC(Request userInfo, string jsonData, string signature, string PAN)
         {
@@ -81,7 +86,32 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/gstr9c/file", jsonData, version, returnType, PAN, signature);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9c);
+            return handler.File(url, jsonData, Version, ReturnType, PAN, signature);
+        }
+        public static Response HashGenerator(Request userInfo, string jsonData)
+        {
+            if (!RequestHandler.IsRequestNull(userInfo, out string message))
+                return RequestHandler.ErrorResponse("GSP121", message);
+
+            string payload;
+            try
+            {
+                payload = JsonConvert.SerializeObject(new RequestPayload()
+                {
+                    APIAction = "RETGENHASH",
+                    EncryptedData = Cryptography.EncryptData(jsonData, userInfo.Keys.SessionKey),
+                    HAMCData = Cryptography.Hmac(jsonData, userInfo.Keys)
+                });
+
+            }
+            catch (Exception)
+            {
+                return RequestHandler.ErrorResponse("GSP141", "Error encrypting payload");
+            }
+            var handler = new RequestHandler(userInfo);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9c);
+            return handler.Put(url, "RETGENHASH", payload);
         }
     }
 }

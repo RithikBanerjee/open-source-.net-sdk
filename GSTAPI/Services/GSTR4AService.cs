@@ -12,7 +12,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
             
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr4a", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr4a);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GetB2BAmendment(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN ="")
         {

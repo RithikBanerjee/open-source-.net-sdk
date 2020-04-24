@@ -13,8 +13,11 @@ namespace GSTAPI.Services
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
                 return RequestHandler.ErrorResponse("GSP121", message);
 
-            var queryString = new NameValueCollection();
-            queryString.Add("gstin", gstin);
+            var queryString = new NameValueCollection
+            {
+                { "action", "EVCOTP" },
+                { "gstin", gstin }
+            };
             if (!string.IsNullOrEmpty(pan))
                 queryString.Add("pan", pan);
             if (!string.IsNullOrEmpty(formType))
@@ -43,10 +46,9 @@ namespace GSTAPI.Services
             {
                 return RequestHandler.ErrorResponse("GSP141", "Error encrypting payload");
             }
-
             var handler = new RequestHandler(userInfo);
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_2, modName.authenticate);
-            return handler.DecryptPostResponse(url, payload);
+            return handler.DecryptPostResponse(url, "OTPREQUEST", payload);
         }
         public static AuthResponse RequestForAuthToken(Request userInfo, string otp)
         {
@@ -68,10 +70,8 @@ namespace GSTAPI.Services
             {
                 return RequestHandler.AuthErrorResponse("GSP141", "Error encrypting payload");
             }
-
             var handler = new RequestHandler(userInfo);
-            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_2, modName.authenticate);
-            return handler.PostAuthResponse(url, payload);
+            return handler.PostAuthResponse(payload);
         }
         public static Response RequestForExtensionOfAuthToken(Request userInfo)
         {
@@ -93,10 +93,9 @@ namespace GSTAPI.Services
             {
                 return RequestHandler.ErrorResponse("GSP141", "Error encrypting payload");
             }
-
             var handler = new RequestHandler(userInfo);
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_1, modName.authenticate);
-            return handler.DecryptPostResponse(url, payload);
+            return handler.DecryptPostResponse(url, "REFRESHTOKEN", payload);
         }
         public static Response Logout(Request userInfo)
         {
@@ -118,10 +117,9 @@ namespace GSTAPI.Services
             {
                 return RequestHandler.ErrorResponse("GSP141", "Error encrypting payload");
             }
-
             var handler = new RequestHandler(userInfo);
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_2, modName.authenticate);
-            return handler.Post(url, payload);
+            return handler.Post(url, "LOGOUT", payload);
         }
     }
 }

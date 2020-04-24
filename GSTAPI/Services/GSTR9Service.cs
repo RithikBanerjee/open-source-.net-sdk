@@ -6,8 +6,8 @@ namespace GSTAPI.Services
 {
     public static class GSTR9Service
     {
-        private static string version = "v1.1";
-        private static string returnType = "GSTR9";
+        private static readonly string ReturnType = "R9";
+        private static readonly string Version = UrlHandler.GetVersion(version.v1_1);
         public static Response GetDetails(Request userInfo, string returnPeriod, string gstin)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -19,7 +19,8 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr9", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GetAutocalculatedDetails(Request userInfo, string returnPeriod, string gstin)
         {
@@ -32,7 +33,8 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/gstr9", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response FileWithEVC(Request userInfo, string jsonData, string PAN, string OTP)
         {
@@ -40,7 +42,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/gstr9/file", jsonData, version, returnType, $"{PAN}|{OTP}");
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9);
+            return handler.File(url, jsonData, Version, ReturnType, $"{PAN}|{OTP}");
         }
         public static Response FileWithDSC(Request userInfo, string jsonData, string signature, string PAN)
         {
@@ -48,7 +51,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/gstr9/file", jsonData, version, returnType, PAN, signature);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9);
+            return handler.File(url, jsonData, Version, ReturnType, PAN, signature);
         }
         public static Response Save(Request userInfo, string jsonData)
         {
@@ -56,7 +60,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.Save("http://localhost:11599/api/returns/gstr9/save", jsonData);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr9);
+            return handler.Save(url, jsonData);
         }
     }
 }

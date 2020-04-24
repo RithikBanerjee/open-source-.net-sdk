@@ -6,15 +6,16 @@ namespace GSTAPI.Services
 {
     public static class ITC04Service
     {
-        private static readonly string version = "v1.1";
-        private static readonly string returnType = "ITC04";
+        private static readonly string ReturnType = "ITC04";
+        private static readonly string Version = UrlHandler.GetVersion(version.v1_1);
         public static Response Save(Request userInfo, string jsonData)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.Save("http://localhost:11599/api/returns/itc04/save", jsonData);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_itc04);
+            return handler.Save(url, jsonData);
         }
         public static Response FileWithEVC(Request userInfo, string jsonData, string PAN, string OTP)
         {
@@ -22,7 +23,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/itc04/file", jsonData, version, returnType, $"{PAN}|{OTP}");
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_itc04);
+            return handler.File(url, jsonData, Version, ReturnType, $"{PAN}|{OTP}");
         }
         public static Response FileWithDSC(Request userInfo, string jsonData, string signature, string PAN)
         {
@@ -30,7 +32,8 @@ namespace GSTAPI.Services
                 return RequestHandler.ErrorResponse("GSP121", message);
 
             var handler = new RequestHandler(userInfo);
-            return handler.File("http://localhost:11599/api/returns/itc04/file", jsonData, version, returnType, PAN, signature);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_itc04);
+            return handler.File(url, jsonData, Version, ReturnType, PAN, signature);
         }
         public static Response GetSummary(Request userInfo, string returnPeriod, string gstin)
         {
@@ -43,7 +46,8 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/itc04", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_itc04);
+            return handler.DecryptGetResponse(url, queryString);
         }
         public static Response GetInvoices(Request userInfo, string returnPeriod, string gstin)
         {
@@ -56,7 +60,8 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
 
             var handler = new RequestHandler(userInfo);
-            return handler.DecryptGetResponse("http://localhost:11599/api/returns/itc04", queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_itc04);
+            return handler.DecryptGetResponse(url, queryString);
         }
     }
 }
