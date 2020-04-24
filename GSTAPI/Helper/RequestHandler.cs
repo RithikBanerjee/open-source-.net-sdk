@@ -70,10 +70,9 @@ namespace GSTAPI.Helper
         }
         
 
-        private WebClient FetchWebClient()
+        private WebClient FetchWebClient(NameValueCollection queryString)
         {
             var gstnHeader = new WebHeaderCollection();
-            gstnHeader.Add(HttpRequestHeader.ContentType, "application/json");
             var properties = typeof(Header).GetProperties();
             foreach(var property in properties)
             {
@@ -84,12 +83,14 @@ namespace GSTAPI.Helper
                 dynamic attribute = property.GetCustomAttributes(false).First();
                 gstnHeader.Add(attribute.DisplayName, propertyValue.ToString());
             }
+            gstnHeader.Add(HttpRequestHeader.ContentType, "application/json");
             gstnHeader.Add("clientid", "l7xx449c021341dd4bebb9290cc7ea013877");
             gstnHeader.Add("client-secret", "4fbd20f5ed2d49019d405a2b32a995d5");
             return new WebClient()
             {
                 Headers = gstnHeader,
-                Encoding = System.Text.Encoding.UTF8
+                Encoding = System.Text.Encoding.UTF8,
+                QueryString = queryString
             };
         }
 
@@ -139,10 +140,9 @@ namespace GSTAPI.Helper
 
         public Response DecryptGetResponse(string address, NameValueCollection queryString)
         {
+            var client = FetchWebClient(queryString);
             try
             {
-                var client = FetchWebClient();
-                client.QueryString = queryString;
                 var responseString = client.DownloadString(address);
                 return ScanResponse(responseString, true);
             }
@@ -154,10 +154,9 @@ namespace GSTAPI.Helper
 
         public Response Get(string address, NameValueCollection queryString)
         {
+            var client = FetchWebClient(queryString);
             try
             {
-                var client = FetchWebClient();
-                client.QueryString = queryString;
                 var responseString = client.DownloadString(address);
                 return ScanResponse(responseString);
             }
@@ -168,12 +167,17 @@ namespace GSTAPI.Helper
         }
 
 
-        public AuthResponse PostAuthResponse(string address, string requestPayload)
+        public AuthResponse PostAuthResponse(string requestPayload)
         {
+            var queryString = new NameValueCollection
+            {
+                { "action", "AUTHTOKEN" }
+            };
+            var client = FetchWebClient(queryString);
+            var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_2, modName.authenticate);
             try
             {
-                var client = FetchWebClient();
-                var responseString = client.UploadString(address, "Post", requestPayload);
+                var responseString = client.UploadString(url, "Post", requestPayload);
                 var response = JsonConvert.DeserializeObject<AuthResponsePayload>(responseString);
                 var responseObject = new AuthResponse
                 {
@@ -198,11 +202,15 @@ namespace GSTAPI.Helper
         }
 
 
-        public Response DecryptPostResponse(string address, string requestPayload)
+        public Response DecryptPostResponse(string address, string action, string requestPayload)
         {
+            var queryString = new NameValueCollection
+            {
+                { "action", action }
+            };
+            var client = FetchWebClient(queryString);
             try
             {
-                var client = FetchWebClient();
                 var responseString = client.UploadString(address, "Post", requestPayload);
                 return ScanResponse(responseString, true);
             }
@@ -211,11 +219,15 @@ namespace GSTAPI.Helper
                 return ErrorResponse("GSP161", "Error processing request");
             }
         }
-        public Response Post(string address, string requestPayload)
+        public Response Post(string address, string action, string requestPayload)
         {
+            var queryString = new NameValueCollection
+            {
+                { "action", action }
+            };
+            var client = FetchWebClient(queryString);
             try
             {
-                var client = FetchWebClient();
                 var responseString = client.UploadString(address, "Post", requestPayload);
                 return ScanResponse(responseString);
             }
@@ -228,11 +240,15 @@ namespace GSTAPI.Helper
         
 
 
-        public Response Put(string address, string requestPayload)
+        public Response Put(string address, string action, string requestPayload)
         {
+            var queryString = new NameValueCollection
+            {
+                { "action", action }
+            };
+            var client = FetchWebClient(queryString);
             try
             {
-                var client = FetchWebClient();
                 var responseString = client.UploadString(address, "Put", requestPayload);
                 return ScanResponse(responseString, true);
             }
@@ -241,6 +257,7 @@ namespace GSTAPI.Helper
                 return ErrorResponse("GSP161", "Error processing request");
             }
         }
+
 
 
 
@@ -263,7 +280,7 @@ namespace GSTAPI.Helper
             {
                 return ErrorResponse("GSP141", "Error encrypting payload");
             }
-            return Put(address, payload);
+            return Put(address, "RETOFFSET", payload);
         }
 
 
@@ -285,7 +302,7 @@ namespace GSTAPI.Helper
             {
                 return ErrorResponse("GSP141", "Error encrypting payload");
             }
-            return Put(address, payload);
+            return Put(address, "RETSAVE", payload);
         }
 
 
@@ -306,7 +323,7 @@ namespace GSTAPI.Helper
             {
                 return ErrorResponse("GSP141", "Error encrypting payload");
             }
-            return Put(address, payload);
+            return Post(address, "RETSUBMIT", payload);
         }
 
 
@@ -334,7 +351,7 @@ namespace GSTAPI.Helper
             {
                 return ErrorResponse("GSP141", "Error encrypting payload");
             }
-            return Put(address, payload);
+            return Put(address, "RETFILE", payload);
         }
 
 
