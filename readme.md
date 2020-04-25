@@ -4,7 +4,7 @@
 ## Open Source SDK for GST Returns  
 
 &emsp;&emsp; [GSP API](/GSTAPI) is a friendly class library which you can use to build your own GST software. It runs on .Net framework 4.6.1 and c# verion 6.0 just to help those millions of software developers to develop software on GST returns with better customization and better statical solutions. This is a software management tool used to file, save, submit as well as fetch GST details for any taxpayer.<br />
-&emsp;&emsp; This c# class library has the capability of versatile software development and more over its open source which allows us to add more features as we discover it more. If used the dll correctly can harness any big GST software and can be improvised since its open source. 
+&emsp;&emsp; This c# class library has the capability of versatile software development and would make software development for GST returns simple and convinient. If used the sdk correctly can harness any big GST software and can be improvised since its open source. 
 
 ## Tables of Content
 
@@ -35,14 +35,16 @@
 &emsp;&emsp; Every service method requires a model that forms the request header for every GST API calls that mainly comprises of  properties like _Username_, _StateCode_, _GSTIN_, _ReturnPeriod_, _GSTNAppKey_ etc. And in case of requests like save, submit or file, would require data for actions like 'RETSAVE', 'RETSUBMIT' or 'RETFILE' in json string format(_JsonData_). For more payload related information on specific return type, go visit: https://developer.gst.gov.in/apiportal/taxpayer/returns/apilist.
 
 ### Contribution
-&emsp;&emsp; Among the immediate updates comprises of method description, building models for every save, submit, file and other request payload, are among the few  needed. needed with many conributors who are ready to be a part of my vision. A SDK which would change the life of every taxpayer as well as the software developers trying to develop a unisersal GST returns software.  
-
+&emsp;&emsp; Among the immediate updates comprises of method description, building models for every save, submit, file and other request payload, etc. This sdk needes lot of conributions which would complete my vision of unified GST software and in turn change the lifes of many taxpayer as well as software developers trying to develop GST returns software.  
 
 ### FAQ
 
 #### How to run the project?
-- Made a DemoApp to elastrate DLL's services
-- Open the DemoApp.sln in your VS & Press 'F5'
+As sdk user, a [Demo App](/DemoApp) is made to elastrate dll's services.<br />
+As contributor, [GST API visual studio solution](../../blob/master/GSTAPI.sln) in your visual studio and Press 'F5'.
+
+#### Any plans for production?
+Needed to work on it a lot.
 
 #### From where does it fetches data?
 From GST Developers Portal's sandbox environment.
