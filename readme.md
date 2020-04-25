@@ -3,8 +3,8 @@
 
 ## Open Source SDK for GST Returns  
 
-&emsp;&emsp; GST DLL is a friendly class library which you can use to build your own GST software. It runs on .Net framework 4.6.1 and c# verion 6.0 just to help those millions of software developers to develop software on GST returns with better customization and better statical solutions. This is a software management tool used to file, save, submit as well as fetch GST details for any taxpayer.<br />
-&emsp;&emsp; This c# class library has the capability of versatile software development and more over its open source which allows us to add more features as we discover it more. If used this dll as predicted can surely replace gaint head MNC's GST software and indeed with less resouce and low budget.
+&emsp;&emsp; [GSP API](/GSTAPI) is a friendly class library which you can use to build your own GST software. It runs on .Net framework 4.6.1 and c# verion 6.0 just to help those millions of software developers to develop software on GST returns with better customization and better statical solutions. This is a software management tool used to file, save, submit as well as fetch GST details for any taxpayer.<br />
+&emsp;&emsp; This c# class library has the capability of versatile software development and more over its open source which allows us to add more features as we discover it more. If used the dll correctly can harness any big GST software and can be improvised since its open source. 
 
 ## Tables of Content
 
@@ -21,18 +21,21 @@
 
 ### Helpers
 &emsp;&emsp; As the name suggests these class files help the service classes to achieve its goals of persuing processed GST api respone. These are done in three class files includes as follows:
+
 #### 1. Request Handler
-&emsp;&emsp; From creation of a web client to sending the request with the encrypted payload as well as the task of validating the request are the main roles of this class file. Firstly, It validates all the info given in the model (object) then creating the web client request with considering all the security protocols. The payload which is taken from user is now encrypted for the created request to finally send the request to GST portal.<br/>
+&emsp;&emsp; From creation of a web client to sending the request with the encrypted payload as well as the task of validating the request are the main roles of this class file. Firstly, It validates all the info given in the model then creating the web client request considering all the security protocols. The payload which is taken from user is then encrypted to finally send the request to GST portal.
+
 #### 2. Cipher Handler
-&emsp;&emsp; It works with encryption of the payload when a request is created and decryption of the response payload recieved from the GST poratl. This involves encryption with public GSTN Key, the app key provided by the user at the time of authentication and session key provided by the GST portal at the time of authentication. For moree security query, go visit: https://developer.gst.gov.in.
+&emsp;&emsp; It works with encryption of request payload and decryption of response payload recieved from the GST poratl. This involves encryption with public GSTN Key, the app key provided by the user at the time of authentication and session key provided by the GST portal at the time of authentication. For more security related information, go visit: https://developer.gst.gov.in.
+
 #### 3. Url handler
-&emsp;&emsp; A simple class file which provides the url for the web client request in order to maintain the access name, version and mod name of the GST portal api urls. This class file is made independent from the rest of the helpers since, any change in url would not cause any kind of change in creating request. 
+&emsp;&emsp; A simple class file which provides the url for the web client request in order to maintain the access name, version and mod name of the GST API urls. This class file is made independent from the rest of the helpers since, any change in url would not cause any kind of change in creating request. 
 
 ### Models
-&emsp;&emsp; A object (model) that forms the request header for every api call (or service method) that is which comprises properties like __Username__, __StateCode__, __GSTIN__, __ReturnPeriod__, __GSTNAppKey__ etc. And request (or service methods) like save, submit or file, would require data for actions like 'RETSAVE', 'RETSUBMIT' or 'RETFILE' in json string format(_JsonData_). For more information on specific return type please visit: https://developer.gst.gov.in/apiportal
+&emsp;&emsp; Every service method requires a model that forms the request header for every GST API calls that mainly comprises of  properties like _Username_, _StateCode_, _GSTIN_, _ReturnPeriod_, _GSTNAppKey_ etc. And in case of requests like save, submit or file, would require data for actions like 'RETSAVE', 'RETSUBMIT' or 'RETFILE' in json string format(_JsonData_). For more payload related information on specific return type, go visit: https://developer.gst.gov.in/apiportal/taxpayer/returns/apilist.
 
 ### Contribution
-
+&emsp;&emsp; Among the immediate updates comprises of method description, building models for every save, submit, file and other request payload, are among the few  needed. needed with many conributors who are ready to be a part of my vision. A SDK which would change the life of every taxpayer as well as the software developers trying to develop a unisersal GST returns software.  
 
 
 ### FAQ
