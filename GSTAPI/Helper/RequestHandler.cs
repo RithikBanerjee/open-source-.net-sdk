@@ -72,6 +72,9 @@ namespace GSTAPI.Helper
 
         private WebClient FetchWebClient(NameValueCollection queryString)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+
             var gstnHeader = new WebHeaderCollection();
             var properties = typeof(Header).GetProperties();
             foreach(var property in properties)
