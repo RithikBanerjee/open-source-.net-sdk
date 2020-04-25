@@ -22,13 +22,13 @@
 ## Helpers
 &emsp;&emsp; As the name suggests these class files help the service classes to achieve its goals of persuing processed GST api respone. These are done in three class files includes as follows:
 
-### 1. Request Handler
+#### 1. Request Handler
 &emsp;&emsp; From creation of a web client to sending the request with the encrypted payload as well as the task of validating the request are the main roles of this class file. Firstly, It validates all the info given in the model then creating the web client request considering all the security protocols. The payload which is taken from user is then encrypted to finally send the request to GST portal.
 
-### 2. Cipher Handler
+#### 2. Cipher Handler
 &emsp;&emsp; It works with encryption of request payload and decryption of response payload recieved from the GST poratl. This involves encryption with public GSTN Key, the app key provided by the user at the time of authentication and session key provided by the GST portal at the time of authentication. For more security related information, go visit: https://developer.gst.gov.in.
 
-### 3. Url handler
+#### 3. Url handler
 &emsp;&emsp; A simple class file which provides the url for the web client request in order to maintain the access name, version and mod name of the GST API urls. This class file is made independent from the rest of the helpers since, any change in url would not cause any kind of change in creating request. 
 
 ## Models
