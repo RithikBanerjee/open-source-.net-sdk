@@ -26,7 +26,7 @@
 &emsp;&emsp; From creation of a web client to sending the request with the encrypted payload as well as the task of validating the request are the main roles of this class file. Firstly, It validates all the info given in the model then creating the web client request considering all the security protocols. The payload which is taken from user is then encrypted to finally send the request to GST portal.
 
 #### 2. Cipher Handler
-&emsp;&emsp; It works with encryption of request payload and decryption of response payload recieved from the GST poratl. This involves encryption with public GSTN Key, the app key provided by the user at the time of authentication and session key provided by the GST portal at the time of authentication.
+&emsp;&emsp; It works with encryption of request payload and decryption of response payload recieved from the GST poratl. This involves encryption with public GSTN Key, the app key provided by the user at the time of authentication and session key provided by the GST portal at the time of authentication.<br />
 For encryption using GSTN Key, RSA algorithm is used for encryption as shown below:
 ```
 RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)certificate.PublicKey.Key;
