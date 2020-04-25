@@ -32,7 +32,7 @@
 &emsp;&emsp; A simple class file which provides the url for the web client request in order to maintain the access name, version and mod name of the GST API urls. This class file is made independent from the rest of the helpers since, any change in url would not cause any kind of change in creating request. 
 
 ### Models
-&emsp;&emsp; Every service method requires a model that forms the request header for every GST API calls that mainly comprises of  properties like _Username_, _StateCode_, _GSTIN_, _ReturnPeriod_, _GSTNAppKey_ etc. And in case of requests like save, submit or file, would require data for actions like 'RETSAVE', 'RETSUBMIT' or 'RETFILE' in json string format(_JsonData_). For more payload related information on specific return type, go visit: https://developer.gst.gov.in/apiportal/taxpayer/returns/apilist.
+&emsp;&emsp; Every service method requires a model that forms the request header for every GST API calls that mainly comprises of  properties like _Username_, _StateCode_, _GSTIN_, _ReturnPeriod_, _GSTNAppKey_ etc. And in case of requests like save, submit or file, would require data for actions like 'RETSAVE', 'RETSUBMIT' or 'RETFILE' in json string format, namely _JsonData_. For more payload related information on specific return type, go visit: https://developer.gst.gov.in/apiportal/taxpayer/returns/apilist.
 
 ### Contribution
 &emsp;&emsp; Among the immediate updates comprises of method description, building models for every save, submit, file and other request payload, etc. This sdk needes lot of conributions which would complete my vision of unified GST software and in turn change the lifes of many taxpayer as well as software developers trying to develop GST returns software.  
