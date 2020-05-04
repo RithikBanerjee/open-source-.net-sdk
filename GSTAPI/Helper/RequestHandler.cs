@@ -87,8 +87,9 @@ namespace GSTAPI.Helper
                 gstnHeader.Add(attribute.DisplayName, propertyValue.ToString());
             }
             gstnHeader.Add(HttpRequestHeader.ContentType, "application/json");
-            gstnHeader.Add("clientid", "l7xx449c021341dd4bebb9290cc7ea013877");
-            gstnHeader.Add("client-secret", "4fbd20f5ed2d49019d405a2b32a995d5");
+            // mail me for demo client id and client secret
+            gstnHeader.Add("clientid", "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            gstnHeader.Add("client-secret", "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             return new WebClient()
             {
                 Headers = gstnHeader,
