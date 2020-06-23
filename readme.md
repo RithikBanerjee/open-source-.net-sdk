@@ -3,7 +3,7 @@
 
 # Open Source SDK for GST Returns  
 
-&emsp;&emsp; [GSP API](/GSTAPI) is a friendly class library which you can use to build your own GST software. It runs on .Net framework 4.6.1 and c# verion 6.0 just to help those millions of software developers to develop software on GST returns with better customization and better statical solutions. This is a software management tool used to file, save, submit as well as fetch GST details for any taxpayer.<br />
+&emsp;&emsp; [GSP API](/GSTAPI) is a friendly class library which you can use to build your own GST software. It is based on .Net framework 4.6.1 just to help those millions of software developers to develop software on GST returns with better customization and better statical solutions. This is a software management tool used to file, save, submit as well as fetch GST details for any taxpayer.<br />
 &emsp;&emsp; This c# class library has the capability of versatile software development and would make software development for GST returns simple and convinient. If used the sdk correctly can harness any big GST software and can be improvised since its open source. 
 
 # Tables of Content
