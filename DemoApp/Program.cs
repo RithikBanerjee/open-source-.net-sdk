@@ -8,7 +8,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            //try this to understand the dll
+            //only used gstr1 services to demostrate how to use the dll
             var demo = new DemoClass();
             if(!demo.AuthenticateRequest(out string message))
                 Console.WriteLine($"\n{message}. Try Again");
