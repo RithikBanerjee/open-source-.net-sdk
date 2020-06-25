@@ -1,4 +1,4 @@
-﻿using GSTAPI.Models;
+using GSTAPI.Models;
 using GSTAPI.Services;
 using System;
 
@@ -8,6 +8,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+            //try this to understand the dll
             var demo = new DemoClass();
             if(!demo.AuthenticateRequest(out string message))
                 Console.WriteLine($"\n{message}. Try Again");
