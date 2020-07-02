@@ -374,7 +374,7 @@ namespace GSTAPI.Helper
                 rtn_typ = returnType,
                 user_role = "Client",
                 ret_period = UserRequest.Header.ReturnPeriod,
-                client_id = "17xx449c021341dd4bebb9290cc7ea013877"
+                client_id = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
             };
         }
     }
