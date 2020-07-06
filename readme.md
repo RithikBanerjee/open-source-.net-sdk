@@ -73,6 +73,3 @@ From GST Developers Portal's sandbox environment.
 
 #### How to test the project?
 Email me for a demo GSTIN and Username.
-```
-dsdsd
-```
