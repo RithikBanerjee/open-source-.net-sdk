@@ -8,7 +8,6 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            //only used gstr1 services to demostrate how to use the dll
             var demo = new DemoClass();
             //first step get authentication token
             if(!demo.AuthenticateRequest(out string message))
@@ -91,7 +90,7 @@ namespace ConsoleApplication1
             MyRequest.Keys.SessionKey = authResponse.SessionKey;
             return true;
         }
-        //second step get, save, submit or file gstr1 data
+        //second step get, save, submit or file gstr data
         public void MainMenu()
         {
             int option = 100;
@@ -102,6 +101,7 @@ namespace ConsoleApplication1
                     Console.WriteLine("\nInvalid input.");
                 switch (option)
                 {
+                    //only implemented gstr1 actions
                     case 1: GSTR1(); break;
                 }
             }
