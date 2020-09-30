@@ -7,6 +7,7 @@ using System.IO;
 
 namespace GSTAPI.Helper
 {
+    //helper to encrypt & decrypt data
     public class CipherHandler
     {
         private static X509Certificate2 GSTNPublickey()
