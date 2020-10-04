@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 
 namespace GSTAPI.Helper
 {
+    //helper to send & recieve from gst data 
     internal class RequestHandler
     {
         public Request UserRequest;
