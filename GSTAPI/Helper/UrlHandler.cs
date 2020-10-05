@@ -1,6 +1,6 @@
-﻿
 namespace GSTAPI.Helper
 {
+    //helper to manage gst portal address
     internal static class UrlHandler
     {
         private static string Domain = "devapi.gst.gov.in";
