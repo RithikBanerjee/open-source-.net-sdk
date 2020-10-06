@@ -1,10 +1,11 @@
-﻿
+
 using GSTAPI.Helper;
 using System;
 using System.ComponentModel;
 
 namespace GSTAPI.Models
 {
+    //basic request created by user
     public class Request
     {
         public CipherKeys Keys { get; set; }
