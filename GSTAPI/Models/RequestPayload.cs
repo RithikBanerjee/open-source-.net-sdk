@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace GSTAPI.Models
 {
+    //basic request info created by user
     internal class RequestPayload
     {
         [JsonProperty("action")]
@@ -11,9 +12,10 @@ namespace GSTAPI.Models
         [JsonProperty("hmac")]
         public string HAMCData { get; set; }
     }
+    
+    //basic request filing info created by user
     internal class RequestPayloadForFiling
     {
-
         [JsonProperty("action")]
         public string APIAction { get; set; }
         [JsonProperty("data")]
