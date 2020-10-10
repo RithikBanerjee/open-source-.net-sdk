@@ -1,7 +1,8 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace GSTAPI.Models
 {
+    //portal basic response 
     public class ResponsePayload
     {
         [JsonProperty("status_cd")]
@@ -14,6 +15,7 @@ namespace GSTAPI.Models
         public string HMACData { get; set; }
 
     }
+    //portal authentication response 
     public class AuthResponsePayload
     {
         [JsonProperty("status_cd")]
@@ -25,6 +27,7 @@ namespace GSTAPI.Models
         [JsonProperty("sek")]
         public string SessionKey { get; set; }
     }
+    //portal error response 
     public class ErrorResponsePayload
     {
         public int status_cd { get; set; }
