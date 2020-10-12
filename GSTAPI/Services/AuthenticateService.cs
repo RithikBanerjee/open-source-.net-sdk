@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 using GSTAPI.Helper;
 using GSTAPI.Models;
@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 
 namespace GSTAPI.Services
 {
+    //class to call all authentication based api 
     public static class AuthenticateService
     {
         public static Response InitiateOTPForEVC(Request userInfo, string gstin, string pan = "", string formType = "")
