@@ -1,9 +1,10 @@
-﻿using GSTAPI.Helper;
+using GSTAPI.Helper;
 using GSTAPI.Models;
 using System.Collections.Specialized;
 
 namespace GSTAPI.Services
 {
+    //class to call all CMP08 based api 
     public static class CMPService
     {
         private static readonly string ReturnType = "CMP08";
