@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using GSTAPI.Helper;
@@ -7,6 +7,7 @@ using System.Collections.Specialized;
 
 namespace GSTAPI.Services
 {
+    //class to call all common based api 
     public static class CommonService
     {
         public static Response AuthRequest(string username, string password, string appKey)
