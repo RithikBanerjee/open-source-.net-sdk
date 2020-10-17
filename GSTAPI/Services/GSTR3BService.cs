@@ -1,9 +1,10 @@
-﻿using GSTAPI.Helper;
+using GSTAPI.Helper;
 using GSTAPI.Models;
 using System.Collections.Specialized;
 
 namespace GSTAPI.Services
 {
+    //class to call all gstr3b based api 
     public static class GSTR3BService
     {
         private static readonly string ReturnType = "R3B";
