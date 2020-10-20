@@ -1,9 +1,10 @@
-﻿using GSTAPI.Helper;
+using GSTAPI.Helper;
 using GSTAPI.Models;
 using System.Collections.Specialized;
 
 namespace GSTAPI.Services
 {
+    //class to call all gstr4a based api 
     public static class GSTR4AService
     {
         private static Response GetInvoices(Request userInfo, NameValueCollection queryString)
