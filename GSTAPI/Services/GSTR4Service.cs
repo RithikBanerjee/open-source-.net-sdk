@@ -1,9 +1,10 @@
-﻿using GSTAPI.Helper;
+using GSTAPI.Helper;
 using GSTAPI.Models;
 using System.Collections.Specialized;
 
 namespace GSTAPI.Services
 {
+    //class to call all gstr4 based api 
     public static class GSTR4Service
     {
         private static readonly string ReturnType = "R4";
