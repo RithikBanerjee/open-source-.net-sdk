@@ -18,7 +18,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
             return handler.DecryptGetResponse(url, queryString);
         }
-
+        //file with EVC api 
         /// <summary>File GSTR1 data with signed EVC data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="jsonData">GSTR1 data to file in Json string format</param>
@@ -34,7 +34,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
             return handler.File(url, jsonData, Version, ReturnType, $"{PAN}|{OTP}");
         }
-
+        //file with DSC api 
         /// <summary>File GSTR1 with signed DSC data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="jsonData">GSTR1 data to file in Json string format</param>
@@ -50,8 +50,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
             return handler.File(url, jsonData, Version, ReturnType, PAN, signature);
         }
-
-
+        //save api 
         /// <summary>Save GSTR1 with signed DSC data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="jsonData">GSTR1 data to save in Json string format</param>
@@ -65,7 +64,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
             return handler.Save(url, jsonData);
         }
-
+        //submit api 
         /// <summary>Submit GSTR1 with signed DSC data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="jsonData">GSTR1 data to submit in Json string format</param>
@@ -79,7 +78,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr1);
             return handler.Submit(url, jsonData);
         }
-
+        //get return status api 
         /// <summary>Fetch return status of GSTR1 data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">Data of which retrun period of GSTR1</param>
@@ -101,7 +100,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_2, modName.returns_gstr1);
             return handler.DecryptGetResponse(url, queryString);
         }
-
+        //get added tax api
         /// <summary>Fetch GSTR1 AT data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">Data of which retrun period of GSTR1</param>
@@ -113,7 +112,7 @@ namespace GSTAPI.Services
             queryString.Add("action", "AT");
             return GetInvoices(userInfo, queryString);
         }
-
+        //get added tax amendment api
         /// <summary>Fetch GSTR1 AT Amemdment data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -127,7 +126,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get B2B api
         /// <summary>Fetch GSTR1 B2B data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -150,7 +149,7 @@ namespace GSTAPI.Services
                 queryString.Add("from_time", fromWhichTime);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get B2B amendment api
         /// <summary>Fetch GSTR1 B2B Amendment data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -171,7 +170,7 @@ namespace GSTAPI.Services
                 queryString.Add("ctin", counterPartyGSTIN);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get B2C large scale api
         /// <summary>Fetch GSTR1 B2CL data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -187,7 +186,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get B2C large scale amendment api
         /// <summary>Fetch GSTR1 B2CL Amendment data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -203,7 +202,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get B2C small scale api
         /// <summary>Fetch GSTR1 B2CS data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -217,7 +216,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get B2C small scale amendment api
         /// <summary>Fetch GSTR1 B2CS Amendment data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -231,7 +230,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get credit debit note from registered api
         /// <summary>Fetch GSTR1 CDNR data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -251,7 +250,7 @@ namespace GSTAPI.Services
                 queryString.Add("from_time", fromWhichTime);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get credit debit note from registered amendment api
         /// <summary>Fetch GSTR1 CDNR Amendment data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -269,7 +268,7 @@ namespace GSTAPI.Services
                 queryString.Add("action_required", actionRequired);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get credit debit note from unregistered api
         /// <summary>Fetch GSTR1 CDNUR data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -283,7 +282,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get credit debit note from unregistered amendment api
         /// <summary>Fetch GSTR1 CDNUR Amendment data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -297,7 +296,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get issued document api
         /// <summary>Fetch GSTR1 documents issued data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -311,7 +310,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get export api
         /// <summary>Fetch GSTR1 EXP data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -325,7 +324,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get export amendment api
         /// <summary>Fetch GSTR1 EXP Amendment data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -339,7 +338,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get summary api
         /// <summary>Fetch GSTR1 summary</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -353,7 +352,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get HSN summary api
         /// <summary>Fetch GSTR1 HSN summary</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -367,7 +366,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get nil rated api
         /// <summary>Fetch GSTR1 Nil rated summary</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -381,7 +380,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
-
+        //get taxpayer data api
         /// <summary>Fetch GSTR1 TXP data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
@@ -395,6 +394,7 @@ namespace GSTAPI.Services
             queryString.Add("gstin", gstin);
             return GetInvoices(userInfo, queryString);
         }
+        //get taxpayer amendment data api
         /// <summary>Fetch GSTR1 TXP Amendment data</summary>
         /// <param name="userInfo">User details in GSTAPI.Models.Request Model</param>
         /// <param name="returnPeriod">GSTR1 data of which retrun period (format: 'MMyyyy')</param>
