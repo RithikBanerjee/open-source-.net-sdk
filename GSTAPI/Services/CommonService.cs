@@ -10,6 +10,7 @@ namespace GSTAPI.Services
     //class to call all common based api 
     public static class CommonService
     {
+        //authentication request api 
         public static Response AuthRequest(string username, string password, string appKey)
         {
             string payload;
@@ -31,6 +32,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.commonapi, version.v0_2, modName.authenticate);
             return handler.Post(url, "ACCESSTOKEN", payload);
         }
+        //log out api 
         public static Response Logout(string username, string appKey, string authToken)
         {
             string payload;
@@ -54,6 +56,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.commonapi, version.v0_2, modName.authenticate);
             return handler.Post(url, "LOGOUT", payload);
         }
+        //search taxpayer api 
         public static Response SearchTaxpayer(string username, string authToken, string gstinToSearch)
         {
             var queryString = new NameValueCollection
@@ -68,6 +71,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.commonapi, version.v0_2, modName.search);
             return handler.Get(url, queryString);
         }
+        //track return status api 
         public static Response TrackReturnStatus(string username, string authToken, CipherKeys keys, string gstin, string returnPeriod, string returnType)
         {
             var queryString = new NameValueCollection
