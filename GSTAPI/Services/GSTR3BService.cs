@@ -9,6 +9,7 @@ namespace GSTAPI.Services
     {
         private static readonly string ReturnType = "R3B";
         private static readonly string Version = UrlHandler.GetVersion(version.v0_3);
+        //get data api
         public static Response GetDetails(Request userInfo, string returnPeriod, string gstin)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -23,6 +24,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_3, modName.returns_gstr3b);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //file with EVC api
         public static Response FileWithEVC(Request userInfo, string jsonData, string PAN, string OTP)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -32,6 +34,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_3, modName.returns_gstr3b);
             return handler.File(url, jsonData, Version, ReturnType, $"{PAN}|{OTP}");
         }
+        //file with DSC api
         public static Response FileWithDSC(Request userInfo, string jsonData, string signature, string PAN)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -41,6 +44,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_3, modName.returns_gstr3b);
             return handler.File(url, jsonData, Version, ReturnType, PAN, signature);
         }
+        //save api
         public static Response Save(Request userInfo, string jsonData)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -50,6 +54,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_3, modName.returns_gstr3b);
             return handler.Save(url, jsonData);
         }
+        //submit api
         public static Response Submit(Request userInfo, string jsonData)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -59,6 +64,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_3, modName.returns_gstr3b);
             return handler.Submit(url, jsonData);
         }
+        //offset api
         public static Response Offset(Request userInfo, string jsonData)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
