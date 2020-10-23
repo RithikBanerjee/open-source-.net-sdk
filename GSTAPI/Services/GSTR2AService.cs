@@ -16,6 +16,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_0, modName.returns_gstr2a);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //get B2B api
         public static Response GetB2BInvoices(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "", string fromWhichTime = "")
         {
             var queryString = new NameValueCollection();
@@ -29,6 +30,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get B2B amendment api
         public static Response GetB2BAInvoices(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "")
         {
             var queryString = new NameValueCollection();
@@ -40,6 +42,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get credit debit note api
         public static Response GetCDNInvoices(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "", string fromWhichTime = "")
         {
             var queryString = new NameValueCollection();
@@ -53,6 +56,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get credit debit note amendment api
         public static Response GetCDNAInvoices(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "")
         {
             var queryString = new NameValueCollection();
@@ -64,6 +68,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get ISD api
         public static Response GetISDCredit(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "")
         {
             var queryString = new NameValueCollection();
@@ -75,6 +80,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get ISD amendment api
         public static Response GetISDACredit(Request userInfo, string returnPeriod, string gstin, string counterPartyGSTIN = "")
         {
             var queryString = new NameValueCollection();
@@ -86,6 +92,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get TCS api
         public static Response GetTCSCredit(Request userInfo, string returnPeriod, string gstin)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -100,6 +107,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_2, modName.returns_gstr2a);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //get TDS api
         public static Response GetTDSCredit(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -109,6 +117,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get TDS amendment api
         public static Response GetTDSACredit(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
