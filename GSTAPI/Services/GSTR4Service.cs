@@ -18,6 +18,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr4);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //save api
         public static Response Save(Request userInfo, string jsonData)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -27,6 +28,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr4);
             return handler.Save("http://localhost:11599/api/returns/gstr4/save", jsonData);
         }
+        //file with EVC api 
         public static Response FileWithEVC(Request userInfo, string jsonData, string PAN, string OTP)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -36,6 +38,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr4);
             return handler.File(url, jsonData, Version, ReturnType, $"{PAN}|{OTP}");
         }
+        //file with DSC api 
         public static Response FileWithDSC(Request userInfo, string jsonData, string signature, string PAN)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -45,6 +48,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr4);
             return handler.File(url, jsonData, Version, ReturnType, PAN, signature);
         }
+        //get advance adjusted api
         public static Response GetAdvancesAdjusted(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -54,6 +58,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get advance adjusted amendment api
         public static Response GetAdvancesAdjustedAmendment(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -63,6 +68,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get advance paid api
         public static Response GetAdvancesPaid(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -72,6 +78,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get advance paid amendment api
         public static Response GetPaidAmendment(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -81,6 +88,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get B2B amendment api
         public static Response GetB2BAmendment(Request userInfo, string returnPeriod, string gstin, string actionRequired = "",string counterPartyGSTIN = "")
         {
             var queryString = new NameValueCollection();
@@ -94,6 +102,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get B2B for registered api
         public static Response GetB2BInvoices(Request userInfo, string returnPeriod, string gstin, string actionRequired = "", string counterPartyGSTIN = "")
         {
             var queryString = new NameValueCollection();
@@ -107,6 +116,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get B2B for unregistered api
         public static Response GetB2BUnregisteredInvoices(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -116,6 +126,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get B2B for unregistered amendment api
         public static Response GetB2BURAmendment(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -125,6 +136,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get credit debit note for registered api
         public static Response GetCDNR(Request userInfo, string returnPeriod, string gstin, string actionRequired = "")
         {
             var queryString = new NameValueCollection();
@@ -136,6 +148,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get credit debit note for registered amendment api
         public static Response GetCDNRAmendment(Request userInfo, string returnPeriod, string gstin, string actionRequired = "")
         {
             var queryString = new NameValueCollection();
@@ -147,6 +160,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get credit debit note for unregistered api
         public static Response GetCDNUR(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -156,6 +170,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get credit debit note for unregistered amendment api
         public static Response GetCDNURAmendment(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -165,6 +180,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get summary api
         public static Response GetSummary(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -174,6 +190,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get import of services api
         public static Response GetImportsOfServices(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -183,6 +200,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get import of services amendment api
         public static Response GetImportsOfServicesAmendment(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -192,6 +210,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get tax due outward supply api
         public static Response GetTaxOnOutwardSupplies(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -201,6 +220,7 @@ namespace GSTAPI.Services
 
             return GetInvoices(userInfo, queryString);
         }
+        //get tax due outward supply amendment api
         public static Response GetTXOSAmendment(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
