@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 
 namespace GSTAPI.Services
 {
+    //class to call all ledger based api 
     public static class LedgerService
     {
         private static Response Get(Request userInfo, NameValueCollection queryString)
@@ -15,6 +16,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_3, modName.ledgers);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //get advance tax api
         public static Response GetAdvanceTax(Request userInfo, string gstin, string fromTime, string toTime)
         {
             var queryString = new NameValueCollection();
@@ -25,6 +27,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get cash ITC balance api
         public static Response GetCashITCBalance(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -34,6 +37,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get cash ledger api
         public static Response GetCashLedger(Request userInfo, string gstin, string fromTime, string toTime)
         {
             var queryString = new NameValueCollection();
@@ -44,6 +48,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get itc ledger api
         public static Response GetITCLedger(Request userInfo, string gstin, string fromTime, string toTime)
         {
             var queryString = new NameValueCollection();
@@ -54,6 +59,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get liability ledger details for return liability api
         public static Response GetLiabilityLedgerDetailsForReturnLiability(Request userInfo, string returnPeriod, string gstin)
         {
             var queryString = new NameValueCollection();
@@ -63,6 +69,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get negative liability api
         public static Response GetNegativeLiability(Request userInfo, string returnPeriod, string gstin, string fromDate, string toDate, string financialYear)
         {
             var queryString = new NameValueCollection();
@@ -75,6 +82,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get data other than returns ledger api
         public static Response GetOtherThanReturnLedger(Request userInfo, string gstin, string fromDate, string toDate, string demandId = "", string stayStatus = "")
         {
             var queryString = new NameValueCollection();
@@ -89,6 +97,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get provisional tax credit api
         public static Response GetProvisionalTaxCredit(Request userInfo, string gstin, string fromTime, string toTime)
         {
             var queryString = new NameValueCollection();
@@ -99,6 +108,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get return related liability balance api
         public static Response GetReturnRelatedLiabilityBalance(Request userInfo, string returnPeriod, string gstin, string returnType)
         {
             var queryString = new NameValueCollection();
