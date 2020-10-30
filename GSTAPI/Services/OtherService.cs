@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using GSTAPI.Helper;
 using GSTAPI.Models;
 using System.Collections.Specialized;
 
 namespace GSTAPI.Services
 {
+    //class to call all other miscellaneous api 
     public static class OtherService
     {
         private static Response Get(Request userInfo, NameValueCollection queryString)
@@ -16,6 +17,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //get filing details api
         public static Response GetFileDetails(Request userInfo, string returnPeriod, string gstin, string token)
         {
             var queryString = new NameValueCollection
@@ -28,6 +30,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //get return status api
         public static Response GetReturnStatus(Request userInfo, string returnPeriod, string gstin, string referenceId)
         {
             var queryString = new NameValueCollection
@@ -40,6 +43,7 @@ namespace GSTAPI.Services
 
             return Get(userInfo, queryString);
         }
+        //track return status api
         public static Response TrackReturnStatus(Request userInfo, string returnPeriod, string gstin, string returnType = "")
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -58,6 +62,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v0_3, modName.returns);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //get late fee api
         public static Response LateFee(Request userInfo, string returnPeriod, string gstin, string returnType = "")
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -75,6 +80,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_0, modName.returns_gstr);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //proceed to file api
         public static Response ProceedToFile(Request userInfo, string returnPeriod, string gstin)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -90,6 +96,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.returns_gstr);
             return handler.DecryptPostResponse(url, "PROCEEDFILE", payload);
         }
+        //get download document status api
         public static Response GetDocumentStatus(Request userInfo, string documentId)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -103,6 +110,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.document);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //download document api
         public static Response DownloadDocument(Request userInfo, string documentId)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
@@ -117,6 +125,7 @@ namespace GSTAPI.Services
             var url = UrlHandler.Route(accessGroup.taxpayerapi, version.v1_1, modName.document);
             return handler.DecryptGetResponse(url, queryString);
         }
+        //upload document api
         public static Response UploadDocument(Request userInfo, string contentType, string data, string documentName)
         {
             if (!RequestHandler.IsRequestNull(userInfo, out string message))
