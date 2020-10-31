@@ -101,7 +101,7 @@ namespace ConsoleApplication1
                     Console.WriteLine("\nInvalid input.");
                 switch (option)
                 {
-                    //only implemented gstr1 actions
+                    //only implemented gstr1, similarly implement other returns
                     case 1: GSTR1(); break;
                 }
             }
